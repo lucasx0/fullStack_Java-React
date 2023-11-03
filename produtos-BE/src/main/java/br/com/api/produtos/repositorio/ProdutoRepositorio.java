@@ -8,5 +8,9 @@ import br.com.api.produtos.modelo.ProdutoModelo;
 @Repository
 public interface ProdutoRepositorio extends CrudRepository<ProdutoModelo, Long>{
 
+    int countByCodigo(int codigo);
+
+    ProdutoModelo findByCodigo(int codigo);
+
     
 } 

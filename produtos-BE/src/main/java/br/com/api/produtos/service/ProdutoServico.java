@@ -39,6 +39,21 @@ public class ProdutoServico {
         }
     }
 
-    
+    // deletar
+
+    public ResponseEntity<?> deletar(int codigo){
+        if(produto_Repositorio.countByCodigo(codigo) == 0){
+            resposta_Modelo.setMensagem("Codigo informado não existe");
+            return new ResponseEntity<>(resposta_Modelo, HttpStatus.BAD_REQUEST);
+        }else{
+            ProdutoModelo modelo = produto_Repositorio.findByCodigo(codigo);
+            produto_Repositorio.delete(modelo);
+            resposta_Modelo.setMensagem("Item deletado com Sucesso");
+
+            return new ResponseEntity<>(resposta_Modelo, HttpStatus.OK);
+        }
+    }
+
+ 
 
 }
