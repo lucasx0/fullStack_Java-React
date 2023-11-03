@@ -61,20 +61,5 @@ public class ProdutoServico {
 
  
 
-    //Metodo editar
-    public ResponseEntity<?> editar (ProdutoModelo produtoModelo){
-        if(produto_Repositorio.countByCodigo(produtoModelo.getCodigo()) == 0){
-            resposta_Modelo.setMensagem("Codigo Informado não existe");
-            return new ResponseEntity<>(resposta_Modelo, HttpStatus.BAD_REQUEST);
-        }else if(produtoModelo.getNome().equals("")){
-            resposta_Modelo.setMensagem("É necessario informar o nome");
-            return new ResponseEntity<>(resposta_Modelo, HttpStatus.BAD_REQUEST);
-        }else if(produtoModelo.getMarca().equals("")){
-            resposta_Modelo.setMensagem("É necessario informar a Marca");
-            return new ResponseEntity<>(resposta_Modelo, HttpStatus.BAD_REQUEST);
-        }else{
-            return new ResponseEntity<>(produto_Repositorio.save(produtoModelo), HttpStatus.OK);
-        }
-    }
-
+   
 }

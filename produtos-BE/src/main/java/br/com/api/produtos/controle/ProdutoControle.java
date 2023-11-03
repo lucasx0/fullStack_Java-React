@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.produtos.modelo.ProdutoModelo;
 import br.com.api.produtos.service.ProdutoServico;
-import jakarta.websocket.server.PathParam;
+
 
 @RestController
 
@@ -38,6 +38,10 @@ public class ProdutoControle {
         return produtoServico.deletar(codig);
     }
 
+    @PutMapping("/alterar")
+    public ResponseEntity<?> alterar(@RequestBody ProdutoModelo produtoModelo){
+        return produtoServico.cadastrarAlterar(produtoModelo, "alterar");
+    }
    
     
 }
