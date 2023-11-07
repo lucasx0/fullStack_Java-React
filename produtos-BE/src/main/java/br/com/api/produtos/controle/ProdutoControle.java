@@ -33,7 +33,7 @@ public class ProdutoControle {
         return produtoServico.cadastrarAlterar(produtoModelo, "cadastrar");
     }
 
-    @DeleteMapping("{codig}")
+    @DeleteMapping("/remover/{codig}")
     public ResponseEntity<?> apagar(@PathVariable int codig){
         return produtoServico.deletar(codig);
     }
