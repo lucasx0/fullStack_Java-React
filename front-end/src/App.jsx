@@ -4,11 +4,11 @@ import Formulario from './formulario'
 import Tabela from './tabela'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [btnCadastrar, setBtnCadastrar] = useState(true)
 
   return (
     <div className="App">
-      <Formulario />
+      <Formulario botao={btnCadastrar}/>
       <Tabela />
     </div>
   )
