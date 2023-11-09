@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-export default function Tabela(){
+export default function Tabela({vetor}){
     return(
         <table className="table">
             <thead>
@@ -15,12 +15,16 @@ export default function Tabela(){
             </thead>
 
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+              {
+                vetor.map((obj, indice) => (
+                <tr key={indice}>
+                    <td>{indice + 1}</td>
+                    <td>{obj.nome}</td>
+                    <td>{obj.marca}</td>
+                    <td><button className="btn btn-success">Selecionar</button></td>
                 </tr>
+                ))
+              }
             </tbody>
         </table>
     )
