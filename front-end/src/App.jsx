@@ -4,8 +4,18 @@ import Formulario from './formulario'
 import Tabela from './tabela'
 
 function App() {
+
+  //Objeto produto
+  const produto = {
+    codigo: 0,
+    nome: '',
+    marca: ''
+  }
+
+
   const [btnCadastrar, setBtnCadastrar] = useState(true)
   const [produtos, setProdutos] = useState([])
+  const [objProduto, setObjProduto] = useState(produto)
 
   //UseEffect
   useEffect(()=>{
@@ -14,9 +24,37 @@ function App() {
     .then(retorno_convertido => setProdutos(retorno_convertido));
   }, []);
 
+  // Obeter dados do formulario
+
+  const Digitar = (e) =>{
+    setObjProduto({...objProduto, [e.target.name] :e.target.value});
+  }
+  //Cadastrar Produto
+
+  const cadastrar = () => {
+    fetch('http://localhost:8080/cadastrar', {
+      method: 'post',
+      body: JSON.stringify(objProduto),
+      headers:{
+        'Content-Type':'application/json',
+        'Accept':'application/json'
+      }
+    })
+    .then(retorno => retorno.json())
+    .then(retorno_convertido => {
+      if(retorno_convertido.mensagem !== undefined){
+        alert(retorno_convertido.mensagem)
+      }else{
+        setProdutos([...produtos, retorno_convertido])
+        alert('Cadastro efetuado com Sucesso!')
+      }
+    })
+  }
+
   return (
     <div className="App">
-      <Formulario botao={btnCadastrar}/>
+      
+      <Formulario botao={btnCadastrar} eventoTeclado={Digitar} cadastrar={cadastrar}/>
       <Tabela vetor={produtos}/>
     </div>
   )

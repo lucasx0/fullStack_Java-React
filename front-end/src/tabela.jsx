@@ -4,7 +4,8 @@ import React from "react";
 
 export default function Tabela({vetor}){
     return(
-        <table className="table">
+        
+                <table className="table">
             <thead>
                 <tr>
                     <th>#</th>
@@ -27,5 +28,7 @@ export default function Tabela({vetor}){
               }
             </tbody>
         </table>
+      
+        
     )
 }

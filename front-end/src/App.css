@@ -11,3 +11,10 @@ form input {
 form input[type='button']{
   margin-right: 10px;
 }
+
+
+.table{
+  align-items: center;
+  text-align: center;
+  margin-left: 50px;
+}

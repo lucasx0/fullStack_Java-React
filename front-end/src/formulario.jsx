@@ -1,14 +1,14 @@
 import React from "react";
 
-export default function Formulario({botao}){
+export default function Formulario({botao, eventoTeclado, cadastrar}){
     return(
         <form action="">
-            <input type="text"  placeholder="Nome" className="form-control"/>
-            <input type="text" placeholder="Marca" className="form-control"/>
+            <input type="text" onChange={eventoTeclado} name="nome" placeholder="Nome" className="form-control"/>
+            <input type="text" placeholder="Marca" onChange={eventoTeclado} name="marca" className="form-control"/>
             {
                 botao
                 ?
-                <input type="button" value="Cadastrar" className="btn btn-primary"/>
+                <input type="button" value="Cadastrar" className="btn btn-primary" onClick={cadastrar}/>
                 :
                 <div>
 
